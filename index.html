@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+</head>
+<body>
+    <div class="chat">
+        <div class="chat__body">
+            <div class="chat__card chat__card--agent">
+                <div class="chat__message-wrapper" style="--index: 0">
+                    <div class="chat__message">Bonjour, je suis Valentin.</div>
+                </div>
+                <div class="chat__message-wrapper" style="--index: 1">
+                    <div class="chat__message">Téléchargez <strong>gratuitement</strong> notre guide sur les <strong>pompes à chaleur</strong> pour comprendre leur <strong>fonctionnement</strong>, leur <strong>installation</strong>, leurs <strong>avantages environnementaux</strong> et <strong>économiques</strong>. Que vous envisagiez d'installer une pompe à chaleur ou simplement curieux, notre guide <strong>est un excellent point de départ</strong> pour prendre une décision éclairée.</div>
+                </div>
+                <div class="chat__message-wrapper" style="--index: 2">
+                    <label class="option-btn" role="button">
+                        <input class="option-btn__input" type="radio" name="option_1" value="e-book-download" data-toggle="message" data-option="start_step">
+                        <span class="option-btn__text">Télécharger le e-book</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(".option-btn__input").each(function(index, item){
+                item.checked = false;
+            });
+
+            var allOptionTemplate = {
+                start_step : `
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">Télécharger le e-book</div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message">
+                                Il vous fournira des informations précieuses, telles que
+                                <ul>
+                                    <li>Des conseils sur la <strong>taille</strong> et le <strong>dimensionnement</strong> de la pompe à chaleur recommandée.</li>
+                                    <li>Les <strong>marques</strong> et les <strong>modèles</strong> adaptés à votre logement.</li>
+                                    <li>Les économies estimées que vous pouvez réaliser avec une pompe à chaleur.</li>
+                                    <li>Les prix de vente conseillés pour les pompes à chaleur.</li>
+                                    <li>Les subventions disponibles pour l'achat d'une pompe à chaleur.</li>
+                                    <li>Les démarches administratives détaillées pour l'installation de votre pompe à chaleur.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="chat__message">Pour créer un guide personnalisé et adapté à votre logement, nous aurions besoin de quelques informations sur votre situation actuelle.</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 3">
+                            <div class="chat__message">Avec ces informations, nous pouvons créer un guide personnalisé qui répondra à vos besoins spécifiques en matière de pompe à chaleur. Ces informations ne seront utilisées que pour vous aider à choisir la meilleure option pour votre maison et ne seront jamais partagées avec des tiers.</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 4">
+                            <div class="chat__message">Pour commencer, pouvez-vous me donner la superficie de votre habitation ?</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 5">
+                            <div class="option-btn-label">Choisissez une option</div>
+                            <label class="option-btn" role="button">
+                                <input class="option-btn__input" type="radio" name="home_size" value="Inférieur à 100 m2" data-toggle="message" data-option="home_size__less_than__100">
+                                <span class="option-btn__text">Inférieur à 100 m2</span>
+                            </label>
+                            <label class="option-btn" role="button">
+                                <input class="option-btn__input" type="radio" name="home_size" value="Entre 100 - 150 m2" data-toggle="message" data-option="home_size__between__100_to_150">
+                                <span class="option-btn__text">Entre 100 - 150 m2</span>
+                            </label>
+                            <label class="option-btn" role="button">
+                                <input class="option-btn__input" type="radio" name="home_size" value="Supérieur à 150 m2" data-toggle="message" data-option="home_size__greater_than__150">
+                                <span class="option-btn__text">Supérieur à 150 m2</span>
+                            </label>
+                        </div>
+                    </div>`,
+                home_size__less_than__100 : `
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">Inférieur à 100 m2</div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message"><strong>Très bien.</strong></div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="chat__message">Pouvez-vous me préciser de <strong>quel genre de propriété</strong>il s'agit ?</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 3">
+                            <div class="option-btn-label">Choisissez une option</div>
+                            <label class="option-btn option-btn--icon" role="button">
+                                <input class="option-btn__input" type="radio" name="property_type" value="Maison" data-toggle="message" data-option="property_type__home">
+                                <span class="option-btn__text"><span class="option-btn__text__icon">🏠</span>Maison</span>
+                            </label>
+                            <label class="option-btn option-btn--icon" role="button">
+                                <input class="option-btn__input" type="radio" name="property_type" value="Appartement" data-toggle="message" data-option="property_type__apartment">
+                                <span class="option-btn__text"><span class="option-btn__text__icon">🏢</span>Appartement</span>
+                            </label>
+                        </div>
+                    </div>`,
+                property_type__home : `
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">Maison</div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message">Maison... <strong>D'accord !</strong></div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="chat__message">Pouvez-vous me dire quel est le <strong>système de chauffage</strong>que vous utilisez actuellement ? (si vous utilisez un autre moyen de chauffage répondez : Éléctricité)</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 3">
+                            <div class="option-btn-label">Choisissez une option</div>
+                            <label class="option-btn option-btn--icon" role="button">
+                                <input class="option-btn__input" type="radio" name="current_heating_system" value="Gaz" data-toggle="message" data-option="current_heating_system__gas">
+                                <span class="option-btn__text"><span class="option-btn__text__icon">🔥</span>Gaz</span>
+                            </label>
+                            <label class="option-btn option-btn--icon" role="button">
+                                <input class="option-btn__input" type="radio" name="current_heating_system" value="Fioul" data-toggle="message" data-option="current_heating_system__fuel_oil">
+                                <span class="option-btn__text"><span class="option-btn__text__icon">🛢️</span>Fioul</span>
+                            </label>
+                            <label class="option-btn option-btn--icon" role="button">
+                                <input class="option-btn__input" type="radio" name="current_heating_system" value="Éléctricité" data-toggle="message" data-option="current_heating_system__electricity">
+                                <span class="option-btn__text"><span class="option-btn__text__icon">🔌</span>Éléctricité</span>
+                            </label>
+                        </div>
+                    </div>`,
+                current_heating_system__gas : `
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">Gaz</div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message">Pouvez-vous me dire quelle est votre <strong>consommation en énergie</strong> pour le chauffage sur <strong>une année</strong> ?</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="option-btn-label">Choisissez une option</div>
+                            <label class="option-btn" role="button">
+                                <input class="option-btn__input" type="radio" name="energy_consumption_yearly" value="Gaz" data-toggle="message" data-option="energy_consumption_yearly__less_than__1000">
+                                <span class="option-btn__text">Inférieur à 1000€/an</span>
+                            </label>
+                            <label class="option-btn" role="button">
+                                <input class="option-btn__input" type="radio" name="energy_consumption_yearly" value="Gaz" data-toggle="message" data-option="energy_consumption_yearly__between__1000_to_1800">
+                                <span class="option-btn__text">Entre 1000€-1800€/an</span>
+                            </label>
+                            <label class="option-btn" role="button">
+                                <input class="option-btn__input" type="radio" name="energy_consumption_yearly" value="Gaz" data-toggle="message" data-option="energy_consumption_yearly__greater_than__1800">
+                                <span class="option-btn__text">Supérieur à 1800€/an</span>
+                            </label>
+                            <label class="option-btn" role="button">
+                                <input class="option-btn__input" type="radio" name="energy_consumption_yearly" value="Gaz" data-toggle="message" data-option="energy_consumption_yearly__skip">
+                                <span class="option-btn__text">Supérieur à 1800€/an</span>
+                            </label>
+                        </div>
+                    </div>`,
+                energy_consumption_yearly__less_than__1000 : `
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">Inférieur à 1000€/an</div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message">Selon notre enquête, <strong>91%</strong> des personnes ayant bénéficié de cet e-book ont choisi de le partager avec un professionnel RGE pour pouvoir <strong>prendre une décision éclairée</strong>.</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="chat__message">
+                                J'analyse les informations fournies et met en place votre <strong class="text-success">votre e-book</strong>
+                                <div class="progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>`,
+            };
+
+            $(document).on('change', '[data-toggle="message"]', function(){
+                const currentKey = $(this).attr("data-option");
+                const currentParentElement = $(this).closest(".chat__card");
+
+                $(this).closest(".chat__message-wrapper").remove();
+
+                if (allOptionTemplate.hasOwnProperty.call(allOptionTemplate, currentKey)) {
+                    const getCurrentOptionResult = allOptionTemplate[currentKey];
+                    currentParentElement.after(getCurrentOptionResult);
+                }
+            });
+        })
+    </script>
+</body>
+</html>

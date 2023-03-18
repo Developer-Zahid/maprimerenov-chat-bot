@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Bot</title>
+    <title>Maprimerenov Chat Bot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -163,7 +163,7 @@
                             </label>
                             <label class="option-btn" role="button">
                                 <input class="option-btn__input" type="radio" name="energy_consumption_yearly" value="Gaz" data-toggle="message" data-option="energy_consumption_yearly__skip">
-                                <span class="option-btn__text">Supérieur à 1800€/an</span>
+                                <span class="option-btn__text">Je ne sais pas</span>
                             </label>
                         </div>
                     </div>`,
@@ -183,18 +183,179 @@
                                 <div class="progress-bar"></div>
                             </div>
                         </div>
+                        <div class="chat__message-wrapper" style="--index: 3">
+                            <div class="chat__message flex-grow-1">
+                                Pouvez-vous m'indiquer le numéro de votre
+                                <strong class="d-block">département ?</strong>
+                                <form action="javascript:void()" class="form" data-toggle="form" data-option="department_number_step">
+                                    <label class="form-lable">Département</label>
+                                    <input type="number" class="form-control" name="department_number" placeholder="Exemple: 02, 51, 93..." min="0" required>
+                                    <div class="form-error">
+                                        <small class="form-error__before">Votre département est impératif afin de vous fournir les subventions disponible de votre région.</small>
+                                        <small class="form-error__after">Entrez votre département</small>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="form-btn">Recevoir mon e-book (1/3)</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>`,
+                department_number_step : `
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">Pouvez-vous m'indiquer le numéro de votre <strong>département ?</strong></div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message"><strong>Département: </strong><span data-input-value="department_number"></span></div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="chat__message flex-grow-1">
+                                Pouvez-vous me donner votre <strong>nom</strong> et <strong>prénom</strong> s'il vous plaît ?
+                                <form action="javascript:void()" class="form" data-toggle="form" data-option="department_names_step">
+                                    <div class="form-row">
+                                        <div class="form-col">
+                                            <label class="form-lable">Prénom*</label>
+                                            <input type="name" class="form-control" name="first_name" placeholder=" " required>
+                                            <div class="form-error">
+                                                <small class="form-error__before">Vos données personnelles sont protégées par les lois RGPD</small>
+                                                <small class="form-error__after">Champs requis</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-col">
+                                            <label class="form-lable">Nom*</label>
+                                            <input type="name" class="form-control" name="last_name" placeholder=" " required>
+                                            <div class="form-error">
+                                                <small class="form-error__after">Champs requis</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="form-btn">Recevoir mon e-book (2/3)</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>`,
+                department_names_step : `
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">Pouvez-vous me donner votre <strong>nom</strong> et <strong>prénom</strong> s'il vous plaît ?</div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message">
+                                <div><strong>Prénom: </strong><span data-input-value="first_name"></span></div>
+                                <div><strong>Nom: </strong><span data-input-value="last_name"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="chat__message">
+                                <div>Madame, Monsieur Ditio</div>
+                                <div>Votre e-book est maintenant disponible et est constamment actualisé via Internet en ce qui concerne les subventions disponibles ainsi que les prix actuels du marché.</div>
+                            </div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 3">
+                            <div class="chat__message">
+                                Je finalise actuellement les derniers détails de votre <strong class="text-success">e-book</strong>
+                                <div class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 4">
+                            <div class="chat__message">Ce e-book sera lié à vos coordonnées telles que votre numéro de téléphone et votre adresse email afin de vous permettre de le consulter à tout moment.</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 5">
+                            <div class="chat__message flex-grow-1">
+                                Pouvez-vous me donner votre <strong>nom</strong> et <strong>prénom</strong> s'il vous plaît ?
+                                <form action="javascript:void()" class="form" data-toggle="form" data-option="department_contact_step">
+                                    <div class="form-row">
+                                        <div class="form-col">
+                                            <label class="form-lable">Téléphone*</label>
+                                            <input type="number" class="form-control" name="telephone" placeholder=" " required>
+                                            <div class="form-error">
+                                                <small class="form-error__before">Votre e-mail et votre téléphone seront vos identifiants de téléchargement.</small>
+                                                <small class="form-error__after">Champs requis</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-col">
+                                            <label class="form-lable">E-mail*</label>
+                                            <input type="email" class="form-control" name="email" placeholder=" " required>
+                                            <div class="form-error">
+                                                <small class="form-error__after">Champs requis</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="form-btn">Recevoir mon e-book (3/3)</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>`,
+                department_contact_step : `
+                    <div class="chat__card chat__card--client">
+                        <div class="chat__message-wrapper" style="--index: 0">
+                            <div class="chat__message">
+                                <div><strong>Téléphone: </strong><span data-input-value="telephone"></span></div>
+                                <div><strong>E-mail: </strong><span data-input-value="email"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat__card chat__card--agent">
+                        <div class="chat__message-wrapper" style="--index: 1">
+                            <div class="chat__message">Calcul des aides en cours ... patientez s'il vous plait</div>
+                        </div>
+                        <div class="chat__message-wrapper" style="--index: 2">
+                            <div class="chat__message">Calcul des aides en cours 0...</div>
+                        </div>
                     </div>`,
             };
 
             $(document).on('change', '[data-toggle="message"]', function(){
                 const currentKey = $(this).attr("data-option");
                 const currentParentElement = $(this).closest(".chat__card");
+                const lastOptionTemplateKey = Object.keys(allOptionTemplate).pop();
+                
+                $(this).closest(".chat__message-wrapper").remove();
+
+                if (allOptionTemplate.hasOwnProperty.call(allOptionTemplate, currentKey)) {
+                    const getCurrentOptionResult = allOptionTemplate[currentKey];
+                    currentParentElement.after(getCurrentOptionResult);                    
+                    if(lastOptionTemplateKey == currentKey){
+                        setTimeout(function(){
+                            window.location = 'https://novecology.fr/';
+                        },3000)
+                    }
+                }
+
+            });
+
+            $(document).on('submit', '[data-toggle="form"]', function(){
+                const currentKey = $(this).attr("data-option");
+                const currentParentElement = $(this).closest(".chat__card");
+                const lastOptionTemplateKey = Object.keys(allOptionTemplate).pop();
+                const formDataObject = Object.fromEntries(new FormData($(this).get(0)).entries());
 
                 $(this).closest(".chat__message-wrapper").remove();
 
                 if (allOptionTemplate.hasOwnProperty.call(allOptionTemplate, currentKey)) {
                     const getCurrentOptionResult = allOptionTemplate[currentKey];
                     currentParentElement.after(getCurrentOptionResult);
+                    for (const [key, value] of Object.entries(formDataObject)) {
+                        $(`[data-input-value="${key}"]`).text(value);
+                    }
+                    if(lastOptionTemplateKey == currentKey){
+                        setTimeout(function(){
+                            window.location = 'https://novecology.fr/';
+                        },3000)
+                    }
                 }
             });
         })

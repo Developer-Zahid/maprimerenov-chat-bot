@@ -10,12 +10,32 @@
   margin: 0;
 }
 
+button[type=button], button[type=submit] {
+  cursor: pointer;
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
 
 .text-success {
   color: #48c774;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-grow-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.d-block {
+  display: block;
 }
 
 .chat__body {
@@ -269,4 +289,47 @@ body {
   100% {
     background-position: -200% 0;
   }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.form-control {
+  display: block;
+  font-size: 16px;
+  padding: 15px 20px;
+  border: 2px solid #added1;
+  border-radius: 5px;
+  background-color: #ededed;
+  outline: none !important;
+  width: 100%;
+}
+.form-control:focus {
+  background-color: #ffffff;
+}
+.form-control:focus:invalid ~ .form-error .form-error__before {
+  display: none;
+}
+.form-control:focus:invalid ~ .form-error .form-error__after {
+  display: initial;
+}
+.form-error {
+  color: #d0021b;
+}
+.form-error__after {
+  display: none;
+}
+.form-btn {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px;
+  color: #000000;
+  background-color: #added1;
+  border: 1px solid #added1;
+  border-radius: 5px;
+}
+.form-btn:hover, .form-btn:focus-visible {
+  border-color: #c7c7c7;
 }/*# sourceMappingURL=style.css.map */

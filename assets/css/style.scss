@@ -18,12 +18,32 @@ $agent-image: 'https://i.ibb.co/0FrHWPw/fake-user.png';
     margin: 0;
 }
 
+button{
+    &[type="button"],
+    &[type="submit"]
+    {
+        cursor: pointer;
+    }
+}
+
 body{
     font-family: $font-primary;
 }
 
 .text-success{
     color: $color-success;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.flex-grow-1{
+    flex-grow: 1;
+}
+
+.d-block{
+    display: block;
 }
 
 .chat{
@@ -179,6 +199,61 @@ body{
         }
         100%{
             background-position: -200% 0;
+        }
+    }
+}
+
+.form{
+    &-row{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    &-control{
+        display: block;
+        font-size: 16px;
+        padding: 15px 20px;
+        border: 2px solid $color-client;
+        border-radius: 5px;
+        background-color: $colorgray--sof;
+        outline: none !important;
+        width: 100%;
+
+        &:focus{
+            background-color: #ffffff;
+
+            &:invalid ~ .form-error{
+                .form-error{
+                    &__before{
+                        display: none;
+                    }
+                    &__after{
+                        display: initial;
+                    }
+                }
+            }
+        }
+    }
+    &-error{
+        color: $color-danger;
+
+        &__after{
+            display: none;
+        }
+    }
+    &-btn{
+        font-size: 14px;
+        font-weight: 600;
+        padding: 12px;
+        color: #000000;
+        background-color: $color-client;
+        border: 1px solid $color-client;
+        border-radius: 5px;
+
+        &:hover,
+        &:focus-visible
+        {
+            border-color: darken($colorgray--sof, $amount: 15);
         }
     }
 }
